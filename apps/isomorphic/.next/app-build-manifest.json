@@ -1,0 +1,52 @@
+{
+  "pages": {
+    "/signin/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/signin/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
+    ],
+    "/(hydrogen)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(hydrogen)/page.css",
+      "static/chunks/app/(hydrogen)/page.js"
+    ],
+    "/(hydrogen)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(hydrogen)/layout.css",
+      "static/chunks/app/(hydrogen)/layout.js"
+    ],
+    "/auth/(sign-up)/sign-up-1/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/auth/(sign-up)/sign-up-1/page.js"
+    ],
+    "/auth/(sign-in)/sign-in-2/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/auth/(sign-in)/sign-in-2/page.js"
+    ],
+    "/auth/(sign-up)/sign-up-2/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/auth/(sign-up)/sign-up-2/page.js"
+    ]
+  }
+}
