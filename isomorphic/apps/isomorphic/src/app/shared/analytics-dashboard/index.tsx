@@ -9,6 +9,7 @@ import TopTrafficSource from '@/app/shared/analytics-dashboard/top-traffic-sourc
 import UserMetrics from '@/app/shared/analytics-dashboard/user-metrics';
 import PageMetrics from '@/app/shared/analytics-dashboard/page-metric/table-widget';
 import TreePlantingParticipation from '@/app/shared/analytics-dashboard/tree-planting-participation';
+import GeographicalDistribution from '@/app/shared/analytics-dashboard/geographical-distribution';
 
 export default function AnalyticsDashboard() {
   return (
@@ -21,6 +22,8 @@ export default function AnalyticsDashboard() {
         <DeviceSessions className="@7xl:col-span-4" />
 
         <TopTrafficSource className="@7xl:col-span-4" />
+
+        <GeographicalDistribution />
 
         <TreePlantingParticipation className="@7xl:col-span-4" />
 
