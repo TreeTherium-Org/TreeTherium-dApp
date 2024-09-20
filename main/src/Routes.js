@@ -34,7 +34,6 @@ import ManageWallets from "./components/ManageWallets";   // Assuming you've cre
 import ChangeUsername from "./components/ChangeUsername";
 import UpdateEmail from "./components/UpdateEmail"; // Import the UpdateEmail component
 import EditAddress from "./components/EditAddress"; // Adjust the path as necessary
-import AccountProfile from "./components/AccountProfile"; // Adjust the path as necessary
 
 class Routes extends Component {
     state = {
@@ -89,7 +88,6 @@ class Routes extends Component {
                             <Route exact path={'/change-username'} render={(props) => (<ChangeUsername {...props} />)} />
                             <Route exact path={'/update-email'} render={(props) => (<UpdateEmail {...props} />)} />
                             <Route exact path={'/edit-address'} render={(props) => (<EditAddress {...props} />)} />
-                            <Route exact path={'/account-profile'} render={(props) => (<AccountProfile {...props} />)} />
 
                         </Switch>
                     )}
