@@ -1,12 +1,18 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // Use Next.js router for redirection
+import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Input, Text, Button, Password, Switch } from 'rizzui';
 import { useMedia } from '@core/hooks/use-media';
 import { Form } from '@core/ui/form';
 import { routes } from '@/config/routes';
 import { loginSchema, LoginSchema } from '@/validators/login.schema';
+
+// Import Firebase Auth and Firestore
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../../../firebase'; // Ensure the correct path to your Firebase config file
 
 const initialValues: LoginSchema = {
   email: 'admin@admin.com',
@@ -16,8 +22,23 @@ const initialValues: LoginSchema = {
 
 export default function SignInForm() {
   const isMedium = useMedia('(max-width: 1200px)', false);
-  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
-    console.log('Sign in form data', data);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
+    try {
+      // Firebase sign-in method
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+
+      console.log('User signed in:', user);
+
+      // Redirect to /ecommerce after successful sign-in
+      router.push('/ecommerce');
+    } catch (error) {
+      setError('Failed to sign in. Please check your credentials.');
+      console.error('Error signing in:', error);
+    }
   };
 
   return (
@@ -69,6 +90,10 @@ export default function SignInForm() {
           </div>
         )}
       </Form>
+
+      {/* Display error if sign-in fails */}
+      {error && <p className="text-red-500">{error}</p>}
+
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 md:mt-7 lg:mt-9 lg:text-base">
         Don’t have an account?{' '}
         <Link

@@ -2,12 +2,16 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Import the useRouter hook
 import { SubmitHandler } from 'react-hook-form';
 import { Password, Switch, Button, Input, Text } from 'rizzui';
 import { useMedia } from '@core/hooks/use-media';
 import { Form } from '@core/ui/form';
 import { routes } from '@/config/routes';
 import { SignUpSchema, signUpSchema } from '@/validators/signup.schema';
+import { auth, db } from '../../../../../firebase'; // Import Firebase auth and Firestore
+import { createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase auth method
+import { doc, setDoc } from 'firebase/firestore'; // Firestore methods
 
 const initialValues = {
   email: '',
@@ -18,9 +22,39 @@ const initialValues = {
 export default function SignUpForm() {
   const isMedium = useMedia('(max-width: 1200px)', false);
   const [reset, setReset] = useState({});
-  const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
-    console.log(data);
-    setReset({ ...initialValues, isAgreed: false });
+  const router = useRouter(); // Initialize the router
+  
+  const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
+    try {
+      // Create user in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+      
+      // Store additional user data in Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        email: data.email,
+        createdAt: new Date(),
+        isAgreed: data.isAgreed
+      });
+
+      console.log('User signed up and data saved:', user);
+      
+      // Reset the form after successful sign-up
+      setReset({ ...initialValues, isAgreed: false });
+
+      // Redirect to sign-in page after successful registration
+      router.push(routes.auth.signIn3); // Redirect to the sign-in route
+
+    } catch (error) {
+      // Handle error (type-guard to check if it's an instance of Error)
+      if (error instanceof Error) {
+        console.error('Error signing up:', error.message);
+        alert('Sign-up failed: ' + error.message);
+      } else {
+        console.error('Unexpected error:', error);
+        alert('An unexpected error occurred');
+      }
+    }
   };
 
   return (
