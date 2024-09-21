@@ -2,16 +2,14 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import the useRouter hook
-import { SubmitHandler } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useForm, SubmitHandler } from 'react-hook-form'; // Import from react-hook-form
 import { Password, Switch, Button, Input, Text } from 'rizzui';
 import { useMedia } from '@core/hooks/use-media';
-import { Form } from '@core/ui/form';
 import { routes } from '@/config/routes';
-import { SignUpSchema, signUpSchema } from '@/validators/signup.schema';
-import { auth, db } from '../../../../../firebase'; // Import Firebase auth and Firestore
-import { createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase auth method
-import { doc, setDoc } from 'firebase/firestore'; // Firestore methods
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../../../../../firebase'; // Ensure this is correctly initialized
 
 const initialValues = {
   email: '',
@@ -22,104 +20,88 @@ const initialValues = {
 export default function SignUpForm() {
   const isMedium = useMedia('(max-width: 1200px)', false);
   const [reset, setReset] = useState({});
-  const router = useRouter(); // Initialize the router
+  const router = useRouter();
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: initialValues,
+  });
+
   
-  const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
+  const onSubmit: SubmitHandler<typeof initialValues> = async (data) => {
+
     try {
-      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       const user = userCredential.user;
-      
-      // Store additional user data in Firestore
-      await setDoc(doc(db, 'users', user.uid), {
+
+      await setDoc(doc(db, 'staff', user.uid), {
         email: data.email,
         createdAt: new Date(),
-        isAgreed: data.isAgreed
+        isAgreed: data.isAgreed,
       });
 
       console.log('User signed up and data saved:', user);
-      
-      // Reset the form after successful sign-up
+
       setReset({ ...initialValues, isAgreed: false });
-
-      // Redirect to sign-in page after successful registration
-      router.push(routes.auth.signIn3); // Redirect to the sign-in route
-
+      router.push(routes.auth.signIn3);
     } catch (error) {
-      // Handle error (type-guard to check if it's an instance of Error)
-      if (error instanceof Error) {
-        console.error('Error signing up:', error.message);
-        alert('Sign-up failed: ' + error.message);
-      } else {
-        console.error('Unexpected error:', error);
-        alert('An unexpected error occurred');
-      }
+      console.error('Error signing up:', error);
+      alert('Sign-up failed: ' + error.message);
     }
   };
 
   return (
     <>
-      <Form<SignUpSchema>
-        validationSchema={signUpSchema}
-        resetValues={reset}
-        onSubmit={onSubmit}
-        useFormProps={{
-          defaultValues: initialValues,
-        }}
-      >
-        {({ register, formState: { errors } }) => (
-          <div className="space-y-5 lg:space-y-6">
-            <Input
-              type="email"
-              size={isMedium ? 'lg' : 'xl'}
-              label="Email"
-              placeholder="Enter your email"
-              className="[&>label>span]:font-medium"
-              {...register('email')}
-              error={errors.email?.message}
-            />
-            <Password
-              label="Password"
-              placeholder="Enter your password"
-              size={isMedium ? 'lg' : 'xl'}
-              className="[&>label>span]:font-medium"
-              {...register('password')}
-              error={errors.password?.message}
-            />
-            <div className="col-span-2 flex items-start pb-1 text-gray-700">
-              <Switch
-                {...register('isAgreed')}
-                className="[&>label>span.transition]:shrink-0 [&>label>span]:font-medium"
-                label={
-                  <Text className="ps-1 text-gray-500">
-                    By signing up you have agreed to our{' '}
-                    <Link
-                      href="/"
-                      className="font-semibold text-gray-700 transition-colors hover:text-primary"
-                    >
-                      Terms
-                    </Link>{' '}
-                    &{' '}
-                    <Link
-                      href="/"
-                      className="font-semibold text-gray-700 transition-colors hover:text-primary"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </Text>
-                }
-              />
-            </div>
-            <Button
-              className="w-full"
-              type="submit"
-              size={isMedium ? 'lg' : 'xl'}
-            >
-              Create Account
-            </Button>
-          </div>
-        )}
-      </Form>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 lg:space-y-6">
+        <Input
+          type="email"
+          size={isMedium ? 'lg' : 'xl'}
+          label="Email"
+          placeholder="Enter your email"
+          className="[&>label>span]:font-medium"
+          {...register('email', { required: 'Email is required' })}
+          error={errors.email?.message}
+        />
+        <Password
+          label="Password"
+          placeholder="Enter your password"
+          size={isMedium ? 'lg' : 'xl'}
+          className="[&>label>span]:font-medium"
+          {...register('password', { required: 'Password is required' })}
+          error={errors.password?.message}
+        />
+        <div className="col-span-2 flex items-start pb-1 text-gray-700">
+          <Switch
+            {...register('isAgreed', { required: 'Agreement is required' })}
+            className="[&>label>span.transition]:shrink-0 [&>label>span]:font-medium"
+            label={
+              <Text className="ps-1 text-gray-500">
+                By signing up you have agreed to our{' '}
+                <Link
+                  href="/"
+                  className="font-semibold text-gray-700 transition-colors hover:text-primary"
+                >
+                  Terms
+                </Link>{' '}
+                &{' '}
+                <Link
+                  href="/"
+                  className="font-semibold text-gray-700 transition-colors hover:text-primary"
+                >
+                  Privacy Policy
+                </Link>
+              </Text>
+            }
+          />
+        </div>
+        <Button
+          className="w-full"
+          type="submit" 
+          size={isMedium ? 'lg' : 'xl'}
+        >
+          Create Account
+        </Button>
+      </form>
+
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 md:mt-7 lg:mt-9 lg:text-base">
         Don’t want to reset?{' '}
         <Link
