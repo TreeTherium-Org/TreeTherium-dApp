@@ -15,6 +15,7 @@ const initialValues = {
   email: '',
   password: '',
   isAgreed: false,
+  role: '',
 };
 
 export default function SignUpForm() {
@@ -32,14 +33,15 @@ export default function SignUpForm() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       const user = userCredential.user;
-
+      //create staff collection in firestore
       await setDoc(doc(db, 'staff', user.uid), {
         email: data.email,
         createdAt: new Date(),
         isAgreed: data.isAgreed,
+        role: data.role,
       });
 
-      console.log('User signed up and data saved:', user);
+      //console.log('User signed up and data saved:', user);
 
       setReset({ ...initialValues, isAgreed: false });
       router.push(routes.auth.signIn3);
@@ -48,7 +50,7 @@ export default function SignUpForm() {
       alert('Sign-up failed: ' + error.message);
     }
   };
-
+//all of this use typescript
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 lg:space-y-6">
@@ -68,6 +70,14 @@ export default function SignUpForm() {
           className="[&>label>span]:font-medium"
           {...register('password', { required: 'Password is required' })}
           error={errors.password?.message}
+        />
+        <Input
+          size={isMedium ? 'lg' : 'xl'}
+          label="Role"
+          placeholder="Enter your role"
+          className="[&>label>span]:font-medium"
+          {...register('role', { required: 'Role is required' })}
+          error={errors.email?.message}
         />
         <div className="col-span-2 flex items-start pb-1 text-gray-700">
           <Switch

@@ -1,13 +1,14 @@
-'use client';
+'use client'; // Mark this as a Client Component
 
-import logoImg from '@public/logo-short.svg';
+import { useRouter } from 'next/navigation'; // Import useRouter from next/navigation
+import { handleGoogleSignIn } from '../../auth/firebaseAuthUtils'; // Import the shared Google sign-in function.
+import logoImg from '@public/logo-short.svg'; // Logo and images are imported here
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Title } from 'rizzui';
 import cn from '@core/utils/class-names';
 import { PiArrowLeftBold } from 'react-icons/pi';
 import { FcGoogle } from 'react-icons/fc';
-import { BsFacebook } from 'react-icons/bs';
 import OrSeparation from '@/app/shared/auth-layout/or-separation';
 
 export default function AuthWrapperThree({
@@ -23,6 +24,8 @@ export default function AuthWrapperThree({
   isSignIn?: boolean;
   className?: string;
 }) {
+  const router = useRouter(); // useRouter inside the Client Component.
+
   return (
     <>
       <div className="relative flex min-h-screen w-full flex-col justify-center bg-gradient-to-tr from-[#136A8A] to-[#267871] p-4 md:p-12 lg:p-28">
@@ -41,7 +44,7 @@ export default function AuthWrapperThree({
         >
           <div className="flex flex-col items-center">
             <Link href={'/'} className="mb-7 inline-block max-w-[64px] lg:mb-9">
-              <Image src={logoImg} alt="Isomorphic" className="dark:invert" />
+              <Image src={logoImg} alt="TT-Logo" className="dark:invert" />
             </Link>
             <Title
               as="h2"
@@ -53,11 +56,11 @@ export default function AuthWrapperThree({
           {isSocialLoginActive && (
             <>
               <div className="flex flex-col gap-4 pb-6 md:flex-row md:gap-6 md:pb-7">
-                <Button className="h-11 w-full" variant="outline">
-                  <BsFacebook className="me-2 h-5 w-5 shrink-0 text-primary" />
-                  <span className="truncate">Signin With Facebook</span>
-                </Button>
-                <Button variant="outline" className="h-11 w-full">
+                <Button 
+                  variant="outline" 
+                  className="h-11 w-full"
+                  onClick={() => handleGoogleSignIn(router)} // Pass the router to the handleGoogleSignIn function.
+                >
                   <FcGoogle className="me-2 h-5 w-5 shrink-0" />
                   <span className="truncate">Signin With Google</span>
                 </Button>

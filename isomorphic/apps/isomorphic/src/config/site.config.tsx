@@ -30,7 +30,7 @@ export const metaObject = (
     openGraph: openGraph ?? {
       title: title ? `${title} - Isomorphic Furyroad` : title,
       description,
-      url: 'https://isomorphic-furyroad.vercel.app',
+      url: 'https://isomorphic-furyroad.vercel.app',//change data about the website
       siteName: 'Isomorphic Furyroad', // https://developers.google.com/search/docs/appearance/site-names
       images: {
         url: 'https://s3.amazonaws.com/redqteam.com/isomorphic-furyroad/itemdep/isobanner.png',
