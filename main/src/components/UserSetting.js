@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const UserSetting = () => {
   return (
-    <Section allNotification={false} searchPopup={true} title="User Settings">
+    <Section allNotification={false} searchPopup={true} title="Profile Settings">
       <div className="balance-area pd-top-40">
         <div className="container">
           <div className="section-title">
@@ -76,7 +76,7 @@ const UserSetting = () => {
             {/* Wallet Management */}
             <li>
               <Link to="/manage-wallets">
-                <span className="float-left">Add Wallet</span>
+                <span className="float-left">Manage Wallet</span>
                 <span className="float-right">
                   <i className="fa fa-plus" />
                 </span>

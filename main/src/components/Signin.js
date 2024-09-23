@@ -90,7 +90,7 @@ class Signin extends Component {
         const { error } = this.state;
 
         return (
-            <Section allNotification={false} searchPopup={true} title={'Signin'}>
+            <Section allNotification={false} searchPopup={true} title={'Login'}>
                 <div className="ba-page-name text-center mg-bottom-40">
                     <h3>Login</h3>
                 </div>

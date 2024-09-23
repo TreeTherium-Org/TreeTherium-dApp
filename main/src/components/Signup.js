@@ -73,7 +73,7 @@ class Signup extends Component {
         const facebookProvider = new FacebookAuthProvider();
 
         return (
-            <Section allNotification={false} searchPopup={true} title="Signup">
+            <Section allNotification={false} searchPopup={true} title="Register">
                 <div className="ba-page-name text-center mg-bottom-40">
                     <h3>Register</h3>
                 </div>
