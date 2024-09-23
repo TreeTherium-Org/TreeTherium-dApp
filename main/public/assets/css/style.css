@@ -4491,3 +4491,41 @@ body {
 .btn-phantom-wallet:hover {
   background-color: #8f80d6;
 }
+.kyc-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #A3A830; /* Light Green */
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #778B28; /* Dark Green on hover */
+}
