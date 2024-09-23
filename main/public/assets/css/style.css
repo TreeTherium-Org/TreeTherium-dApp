@@ -632,8 +632,15 @@ ul {
   color: #fff; }
 
 .btn-purple {
-  background: #33231F;
-  color: #fff; }
+  background: #A3A830;
+  color: #fff; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn-purple:hover {
+  background-color: #778B28; /* Dark Green on hover */
+}
 
 .btn-green {
   background: #1dcc70;
@@ -1025,7 +1032,7 @@ ul {
 
 .ba-page-name h3 {
   color: #fff;
-  background: #33231F;
+  background: #A3A830;
   padding: 17px;
   margin-bottom: 0; }
 
@@ -1877,7 +1884,7 @@ ul {
 
 /************* signin ***********/
 .contact-form-inner {
-  background: #fff;
+  background: #F5F5F5;
   padding: 40px 20px; }
   .contact-form-inner .btn {
     height: 45px;
