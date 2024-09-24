@@ -64,7 +64,7 @@ const KYCForm = () => {
 
   return (
     <div className="container">
-      <h3>KYC Form</h3>
+      <h3>Let's get you verified</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Full Name</label>
