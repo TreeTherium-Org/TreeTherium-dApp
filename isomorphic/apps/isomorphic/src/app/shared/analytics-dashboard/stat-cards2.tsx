@@ -1,11 +1,13 @@
 'use client';
 
+
 import MetricCard from '@core/components/cards/metric-card';
 import { Text } from 'rizzui';
 import cn from '@core/utils/class-names';
 import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 
-const trafficData = [
+
+const TREECirculatingData = [
   {
     day: 'Sunday',
     sale: 4000,
@@ -43,7 +45,8 @@ const trafficData = [
   },
 ];
 
-const conventionRateData = [
+
+const NFTCreatedData = [
   {
     day: 'Sunday',
     sale: 2000,
@@ -81,90 +84,34 @@ const conventionRateData = [
   },
 ];
 
-const barData = [
-  {
-    day: 'Sunday',
-    sale: 2000,
-    cost: 2400,
-  },
-  {
-    day: 'Monday',
-    sale: 2800,
-    cost: 1398,
-  },
-  {
-    day: 'Tuesday',
-    sale: 3500,
-    cost: 9800,
-  },
-  {
-    day: 'Wednesday',
-    sale: 2780,
-    cost: 3908,
-  },
-  {
-    day: 'Thursday',
-    sale: 1890,
-    cost: 4800,
-  },
-  {
-    day: 'Friday',
-    sale: 2390,
-    cost: 3800,
-  },
-  {
-    day: 'Saturday',
-    sale: 3490,
-    cost: 4300,
-  },
-];
+
+
 
 const analyticsStatData = [
   {
     id: '1',
-    title: 'Website Traffic',
+    title: '$TREE Circulating',
     metric: '91.6K',
-    info: 'Number of the visitors on the website.',
+    info: 'Number of tokens in circulation',
     increased: true,
     decreased: false,
     percentage: '+32.40',
     fill: '#015DE1',
-    chart: trafficData,
+    chart: TREECirculatingData,
   },
   {
     id: '2',
-    title: 'Conversion Rate',
-    metric: '12.56%',
-    info: 'Number of the visitors turned into user.',
+    title: 'NFT Created',
+    metric: '12.6K',
+    info: 'Number of trees tokenized as NFTs.',
     increased: false,
     decreased: true,
     percentage: '-4.40',
     fill: '#048848',
-    chart: conventionRateData,
-  },
-  {
-    id: '3',
-    title: 'Bounce Rate',
-    metric: '45.33%',
-    info: 'Number of the visitors went without visiting.',
-    increased: true,
-    decreased: false,
-    percentage: '+32.40',
-    fill: '#B92E5D',
-    chart: barData,
-  },
-  {
-    id: '4',
-    title: 'Session Duration',
-    metric: '2.30 hrs',
-    info: 'Amount of time users used the website.',
-    increased: true,
-    decreased: false,
-    percentage: '+32.40',
-    fill: '#8200E9',
-    chart: barData,
+    chart: NFTCreatedData,
   },
 ];
+
 
 export default function StatCards({ className }: { className?: string }) {
   return (
