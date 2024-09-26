@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes';
 export const presetLight = {
   lighter: '#f1f1f1',
   light: '#666666',
-  default: '#111111',
+  default: '#A3A830',
   dark: '#000000',
   foreground: '#ffffff',
 };
@@ -20,7 +20,7 @@ export const presetDark = {
 export const DEFAULT_PRESET_COLORS = {
   lighter: '#d7e3fe',
   light: '#608efb',
-  default: '#3872fa',
+  default: '#A3A830',
   dark: '#1d58d8',
   foreground: '#ffffff',
 };
@@ -51,7 +51,7 @@ export const usePresets = () => {
       colors: {
         lighter: '#ccfbf1', // Teal 100
         light: '#5eead4', // Teal 300
-        default: '#0d9488', // Teal 600
+        default: '#A3A830', // Teal 600
         dark: '#115e59', // Teal 800
         foreground: '#ffffff',
       },

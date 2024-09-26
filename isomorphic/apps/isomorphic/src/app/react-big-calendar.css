@@ -193,17 +193,17 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-toolbar button:active:hover, .rbc-toolbar button:active:focus, .rbc-toolbar button.rbc-active:hover, .rbc-toolbar button.rbc-active:focus {
   color: #373a3c;
-  background-color: #d4d4d4;
+  background-color: #778B28;
   border-color: #8c8c8c;
 }
 .rbc-toolbar button:focus {
   color: #373a3c;
-  background-color: #e6e6e6;
+  background-color: #778B28;
   border-color: #adadad;
 }
 .rbc-toolbar button:hover {
   color: #373a3c;
-  background-color: #e6e6e6;
+  background-color: #778B28;
   border-color: #adadad;
 }
 
@@ -333,7 +333,7 @@ button.rbc-input::-moz-focus-inner {
   color: #3174ad;
 }
 .rbc-show-more:hover, .rbc-show-more:focus {
-  color: #265985;
+  color: #778B28;
 }
 
 .rbc-month-view {

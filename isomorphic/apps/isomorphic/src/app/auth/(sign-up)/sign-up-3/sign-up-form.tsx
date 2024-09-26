@@ -71,14 +71,7 @@ export default function SignUpForm() {
           {...register('password', { required: 'Password is required' })}
           error={errors.password?.message}
         />
-        <Input
-          size={isMedium ? 'lg' : 'xl'}
-          label="Role"
-          placeholder="Enter your role"
-          className="[&>label>span]:font-medium"
-          {...register('role', { required: 'Role is required' })}
-          error={errors.email?.message}
-        />
+        
         <div className="col-span-2 flex items-start pb-1 text-gray-700">
           <Switch
             {...register('isAgreed', { required: 'Agreement is required' })}

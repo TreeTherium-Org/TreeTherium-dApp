@@ -10,7 +10,7 @@ export default function SignUpPage() {
     <AuthWrapperThree
       title={
         <>
-          <span className="bg-gradient-to-r from-[#136A8A] to-[#267871] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#2b3d1d] to-[#A3A830] bg-clip-text text-transparent">
             Join us today!
           </span>{' '}
           Staff Registration

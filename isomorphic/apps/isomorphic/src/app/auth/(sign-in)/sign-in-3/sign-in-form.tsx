@@ -34,7 +34,7 @@ export default function SignInForm() {
       console.log('User signed in:', user);
 
       // Redirect to /ecommerce after successful sign-in
-      router.push('/ecommerce');
+      router.push('/welcome');
     } catch (error) {
       setError('Failed to sign in. Please check your credentials.');
       console.error('Error signing in:', error);

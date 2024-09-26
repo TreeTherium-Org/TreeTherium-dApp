@@ -1,8 +1,8 @@
 'use client'; // Mark this as a Client Component
-
+//LAYOUT PAGE 
 import { useRouter } from 'next/navigation'; // Import useRouter from next/navigation
 import { handleGoogleSignIn } from '../../auth/firebaseAuthUtils'; // Import the shared Google sign-in function.
-import logoImg from '@public/logo-short.svg'; // Logo and images are imported here
+import logoImg from '@public/TT-logo.png'; // Logo and images are imported here
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Title } from 'rizzui';
@@ -28,7 +28,7 @@ export default function AuthWrapperThree({
 
   return (
     <>
-      <div className="relative flex min-h-screen w-full flex-col justify-center bg-gradient-to-tr from-[#136A8A] to-[#267871] p-4 md:p-12 lg:p-28">
+      <div className="relative flex min-h-screen w-full flex-col justify-center bg-gradient-to-tr from-[#2b3d1d] to-[#A3A830] p-4 md:p-12 lg:p-28">
         <Link
           href={'/'}
           className="mb:pb-3 start-4 z-10 flex items-center justify-center pb-6 pt-3 text-sm font-medium text-white/80 hover:text-white md:absolute md:top-1/2 md:-translate-y-1/2 md:rounded-full"

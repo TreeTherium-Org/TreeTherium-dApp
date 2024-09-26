@@ -11,10 +11,10 @@ export default function SignIn() {
     <AuthWrapperThree
       title={
         <>
-          <span className="bg-gradient-to-r from-[#136A8A] to-[#267871] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#778B28] to-[#A3A830] bg-clip-text text-transparent">
             Welcome Back!
           </span>{' '}
-          Stay signed in and get special benefits.
+          Staff Login
         </>
       }
       isSignIn
