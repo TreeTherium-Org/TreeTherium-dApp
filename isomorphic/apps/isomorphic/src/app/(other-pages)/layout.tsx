@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button, Title, Text } from 'rizzui';
-import LaptopImg from '@public/welcome-laptop.png';
-import MobileImg from '@public/welcome-mobile.png';
+import HandsTree from '@public/hands-tree.jpg';
 
 export default function WelcomePage() {
   const [fadeOut, setFadeOut] = useState(false); // For controlling the fade-out effect
@@ -39,45 +38,25 @@ export default function WelcomePage() {
           <div>
             <Title
               as="h2"
-              className="mb-3 text-[22px] font-bold leading-snug sm:text-2xl md:mb-5 md:text-3xl md:leading-snug xl:mb-7 xl:text-4xl xl:leading-normal 2xl:text-[40px] 3xl:text-5xl 3xl:leading-snug"
+              className="mb-3 text-[50px] font-bold leading-snug sm:text-2xl md:mb-5 md:text-3xl md:leading-snug xl:mb-7 xl:text-4xl xl:leading-normal 2xl:text-[40px] 3xl:text-5xl 3xl:leading-snug"
             >
               Welcome to Treetherium <br />
               Staff Dashboard.
             </Title>
             <Text className="mb-6 max-w-[612px] text-sm leading-loose text-gray-500 md:mb-8 xl:mb-10 xl:text-base xl:leading-loose">
-              Get ready to embark on this journey together!
-              <br className="hidden sm:inline-block lg:hidden" /> We are one.
+              Together, let's make a change!
             </Text>
-            <div className="mt-8 flex flex-col justify-center gap-4 lg:flex-row lg:justify-start xl:gap-6">
-              <Button
-                color="primary"
-                size="lg"
-                className="h-12 px-4 xl:h-14 xl:px-6"
-              >
-                Start Installation
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-12 px-4 xl:h-14 xl:px-6"
-              >
-                User Guide
-              </Button>
-            </div>
           </div>
-          <div className="relative">
+          <div className="relative h-screen w-full">
             <Image
-              src={LaptopImg}
+              src={HandsTree}
               alt="coming-soon"
-              className="aspect-[632/630] max-w-[256px] sm:max-w-xs lg:max-w-lg 2xl:max-w-xl 3xl:max-w-[632px]"
+              layout="fill"
+              objectFit="cover"
+              className="z-0"
             />
-            <Image
-              src={MobileImg}
-              alt="coming-soon"
-              className="absolute left-0 top-1/2 z-10 aspect-[275/390] max-w-[100px] -translate-y-1/2 lg:max-w-[210px]"
-            />
-            <div className="mx-auto h-20 w-32 bg-gray-1000/50 blur-[57px] [transform:rotateX(80deg)]"></div>
-            <div className="absolute bottom-10 left-3 mx-auto h-20 w-32 bg-gray-1000/50 blur-[57px] [transform:rotateX(80deg)] lg:left-7"></div>
+            {/* Horizontal gradient overlay from white to transparent */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent z-10" />
           </div>
         </div>
       </div>

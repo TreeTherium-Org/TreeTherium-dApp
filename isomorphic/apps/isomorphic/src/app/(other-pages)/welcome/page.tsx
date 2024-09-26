@@ -48,7 +48,7 @@ export default function WelcomePage() {
           <div>
             <Title
               as="h2"
-              className="mb-3 text-[20px] font-bold leading-snug sm:text-2xl md:mb-5 md:text-3xl md:leading-snug xl:mb-7 xl:text-4xl xl:leading-normal 2xl:text-[40px] 3xl:text-5xl 3xl:leading-snug"
+              className="mb-3 text-[px] font-bold leading-snug sm:text-2xl md:mb-5 md:text-3xl md:leading-snug xl:mb-7 xl:text-4xl xl:leading-normal 2xl:text-[40px] 3xl:text-5xl 3xl:leading-snug"
             >
               Welcome to Treetherium <br />
               Staff Dashboard.
