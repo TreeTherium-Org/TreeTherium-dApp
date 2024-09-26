@@ -22,7 +22,7 @@ const pageHeader = {
 export default function BlankPage() {
   return (
     <>
-      <ProtectedRoute allowedRoles={['manager']}>
+      <ProtectedRoute allowedRoles={['admin']}>
         <div>Your Roles and Permissions Page</div>
       </ProtectedRoute>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>

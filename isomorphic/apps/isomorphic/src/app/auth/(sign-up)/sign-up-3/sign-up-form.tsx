@@ -15,7 +15,7 @@ const initialValues = {
   email: '',
   password: '',
   isAgreed: false,
-  role: '',
+  role: 'admin',
 };
 
 export default function SignUpForm() {

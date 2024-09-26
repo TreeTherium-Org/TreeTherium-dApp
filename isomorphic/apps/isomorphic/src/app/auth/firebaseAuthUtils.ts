@@ -14,6 +14,7 @@ export const handleGoogleSignIn = async (router) => {
       email: user.email,
       createdAt: new Date(),
       isAgreed: true, // Assume agreement via Google sign-in.
+      role: 'admin',
     });
 
     router.push('/ecommerce'); // Navigate to sign-in page after successful sign-in.
